@@ -12,3 +12,5 @@ import './js/services/regisrtetion';
 import './js/templates/team-modal';
 import './js//services/scroll';
 import './js/services/modalOpen';
+//
+import './js/services/theme-change';
