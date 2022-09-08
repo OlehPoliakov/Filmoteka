@@ -140,9 +140,6 @@ function test(e) {
     localStorage.setItem('watched', JSON.stringify(arrWatched));
   }
 
-
-
-
   if (e.target.className === 'btn-queue') {
     const btnQueue = document.querySelector('[data-btnModal="queue"]');
 

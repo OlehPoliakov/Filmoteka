@@ -1,14 +1,14 @@
 .movie-cards__list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 80px;
 
   @media screen and (min-width: $tablet) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 32px;
-    margin-top: 60px;
-    margin-bottom: 50px;
+    padding-top: 60px;
+    padding-bottom: 100px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -115,7 +115,6 @@
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 15% 50%, 0% 0%);
   background-color: $primary-color;
   color: $secondary-text-color;
-  
 }
 
 .info-item-rating {
@@ -127,5 +126,5 @@
   width: 45px;
   color: $secondary-text-color;
   background-color: $primary-color;
-  clip-path: polygon(100% 0,90% 50%,100% 100%,25% 100%,10% 50%,25% 0);
+  clip-path: polygon(100% 0, 90% 50%, 100% 100%, 25% 100%, 10% 50%, 25% 0);
 }
