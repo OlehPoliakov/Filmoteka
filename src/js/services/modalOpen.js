@@ -5,6 +5,7 @@ const gallery = document.querySelector('.movie-cards__list');
 const modalRef = document.querySelector('.modal');
 const modalInner = document.querySelector('.modal-inner');
 const modalCloseBtn = document.querySelector('.btn-close');
+const body = document.querySelector('body');
 
 const renderDetails = e => {
   const idEl = e.target.closest('li').id;
@@ -12,6 +13,9 @@ const renderDetails = e => {
     renderFilm(res);
   });
 };
+
+// document.body.style.overflow = 'hidden';
+
 gallery.addEventListener('click', renderDetails);
 
 const renderFilm = ({
@@ -32,25 +36,46 @@ const renderFilm = ({
     : '';
 
   const markup = `<li id='${id}' class="movies__item">
-    <img class="movies__img" src="${poster}" alt="${original_title}">
+  <img class="movie-modal__img" src="${poster}" alt="${original_title}">
     <div class="movies__wrapper">
-        <h2 class="movies__name">${original_title}</h2>
+        <h2 class="movie-modal__name">${original_title}</h2>
         <div class="movies__wrapper--data">
+            <table class="movie-modal__table">
+                        <tr>
+                            <td class="movie-modal__text">Vote / Votes</td>
+                            <td class="movie-modal__numbers"><span class="movie-modal__vote">${vote_average} </span> / <span class="movie-modal__votes">${vote_count}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="movie-modal__text">Popularity</td>
+                            <td class="movie-modal__numbers">${popularity}</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="movie-modal__text">Original Title</td>
+                            <td class="movie-modal__numbers">${original_title}</td>
+                        </tr>
+                        <tr>
+                            <td class="movie-modal__text">Genre</td>
+                            <td class="movie-modal__numbers">${genre}</td>
+                        </tr>
+                    </table>
 
-            <span class="movies__vote">Vote / Votes${vote_average} / ${vote_count}</span>
-            <span class="movies__popularity">Popularity ${popularity}</span>
-            <span class="movies__genre">Original Title ${original_title}</span>
-            <span class="movies__genre">Genre ${genre}</span>
-            <p>ABOUT</p>
-            <p>${overview}</p>
+           
+            <article class="movie-modal__article">
+            <p class="movie-overview__title">ABOUT</p>
+            <p class="movie-overview__text">${overview}</p>
+            </article>
             <button class='btn-watched' data-btnModal="watched">add to Watched</button>
-            <button data-btnModal="queue">add to queue</button>
+            <button class='btn-watched' data-btnModal="queue">add to queue</button>
             </div>
         </div>
     </li>`;
   modalInner.insertAdjacentHTML('afterbegin', markup);
   modalRef.classList.add('is-open');
   document.addEventListener('keydown', handleEscClose);
+
+
+
 };
 
 function handleModalClose() {
