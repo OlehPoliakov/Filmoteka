@@ -24,6 +24,11 @@ export default class TheMovieAPI {
       this.#queryParams
     );
     hideLoader();
+    const getFilmStorage = JSON.parse(localStorage.getItem('films')) ?? [];
+    localStorage.setItem(
+      'films',
+      JSON.stringify([...data.results, ...getFilmStorage])
+    );
     return data;
   }
   // запит по ключовому слову

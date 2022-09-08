@@ -14,8 +14,6 @@ const renderDetails = e => {
   });
 };
 
-// document.body.style.overflow = 'hidden';
-
 gallery.addEventListener('click', renderDetails);
 
 const renderFilm = ({
@@ -34,6 +32,14 @@ const renderFilm = ({
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : '';
+
+  const getWatched = localStorage.getItem('watched') ?? '[]';
+  const parseWatched = JSON.parse(getWatched);
+  const isInWatched = parseWatched.some(movie => movie.id === id);
+
+  const getQueue = localStorage.getItem('queue') ?? '[]';
+  const parseQueue = JSON.parse(getQueue);
+  const isInQueue = parseQueue.some(movie => movie.id === id);
 
   const markup = `<li id='${id}' class="movies__item">
   <img class="movie-modal__img" src="${poster}" alt="${original_title}">
@@ -65,17 +71,18 @@ const renderFilm = ({
             <p class="movie-overview__title">ABOUT</p>
             <p class="movie-overview__text">${overview}</p>
             </article>
-            <button class='btn-watched' data-btnModal="watched">add to Watched</button>
-            <button class='btn-watched' data-btnModal="queue">add to queue</button>
+            <button class='btn-watched' data-btnModal="watched">${
+              isInWatched ? 'Remove from watched' : 'add to Watched'
+            }</button>
+            <button class='btn-queue' data-btnModal="queue">${
+              isInQueue ? 'Remove from queue' : 'add to queue'
+            }</button>
             </div>
         </div>
     </li>`;
   modalInner.insertAdjacentHTML('afterbegin', markup);
   modalRef.classList.add('is-open');
   document.addEventListener('keydown', handleEscClose);
-
-
-
 };
 
 function handleModalClose() {
@@ -98,3 +105,63 @@ function handleCloseToBackdrop(e) {
   }
 }
 modalRef.addEventListener('click', handleCloseToBackdrop);
+
+const getFilms = localStorage.getItem('films');
+const parsedFilms = JSON.parse(getFilms);
+
+const getQueue = localStorage.getItem('queue');
+const getQueueParse = JSON.parse(getQueue);
+const arrQueue = getQueueParse ?? [];
+
+const getWathed = localStorage.getItem('watched');
+const getWathcParse = JSON.parse(getWathed);
+const arrWatched = getWathcParse ?? [];
+
+function test(e) {
+  const idEl = e.target.closest('li').id;
+  if (e.target.className === 'btn-watched') {
+    const btnLibraryWatch = document.querySelector('[data-btnModal="watched"]');
+
+    const filmById = parsedFilms.find(el => el.id === Number(idEl));
+    if (!filmById) {
+      return;
+    }
+    const watchedFilmIndex = arrWatched.findIndex(
+      item => item.id === filmById.id
+    );
+    if (watchedFilmIndex === -1) {
+      btnLibraryWatch.textContent = 'Remove from watched';
+      arrWatched.push(filmById);
+    } else {
+      btnLibraryWatch.textContent = 'add to Watched';
+      arrWatched.splice(watchedFilmIndex, 1);
+    }
+
+    localStorage.setItem('watched', JSON.stringify(arrWatched));
+  }
+
+
+
+
+  if (e.target.className === 'btn-queue') {
+    const btnQueue = document.querySelector('[data-btnModal="queue"]');
+
+    const filmById = parsedFilms.find(el => el.id === Number(idEl));
+    if (!filmById) {
+      return;
+    }
+    const watchedFilmIndex = arrQueue.findIndex(
+      item => item.id === filmById.id
+    );
+    if (watchedFilmIndex === -1) {
+      btnQueue.textContent = 'Remove from queue';
+      arrQueue.push(filmById);
+    } else {
+      btnQueue.textContent = 'Add to queue';
+      arrQueue.splice(watchedFilmIndex, 1);
+    }
+
+    localStorage.setItem('queue', JSON.stringify(arrQueue));
+  }
+}
+modalInner.addEventListener('click', test);

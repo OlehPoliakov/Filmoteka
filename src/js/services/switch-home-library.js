@@ -30,17 +30,3 @@ function onLibraryBtnClick() {
   ref.homeBtn.classList.remove('current');
   ref.header.classList.add('header__is-active');
 }
-
-ref.queueBtn.addEventListener('click', onQueueBtnClick);
-
-function onQueueBtnClick() {
-  ref.watchBtn.classList.remove('btn-js-active ');
-  ref.queueBtn.classList.add('btn-js-active ');
-}
-
-ref.watchBtn.addEventListener('click', onWatchBtnClick);
-
-function onWatchBtnClick() {
-  ref.queueBtn.classList.remove('btn-js-active');
-  ref.watchBtn.classList.add('btn-js-active ');
-}
