@@ -13,8 +13,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const button = document.querySelector('.header__singup-link');
-const ul = document.querySelector('.header__list');
+const button = document.querySelector('.header__btn-signup');
+console.log(button);
+const div = document.querySelector('.header__btn-container');
+console.log(div);
 
 button.addEventListener('click', onAuthGoogle);
 
@@ -31,11 +33,7 @@ function onAuthGoogle() {
     
       if (user.email) {
         button.classList.add('is-hidden');
-        console.log(`Singed in as ${user.displayName}`);
-        ul.insertAdjacentHTML(
-          'beforeend',
-          `<li class="header__ref header__contact-link">Singed in as ${user.displayName}</li>`
-        );
+        div.innerHTML = `<a class="header__ref header__singup-link header__btn-signup" style="font-size">${user.displayName}</a>`;       
       }
     })
     .catch(error => {

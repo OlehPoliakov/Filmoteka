@@ -44,9 +44,3 @@ function onWatchBtnClick() {
   ref.queueBtn.classList.remove('btn-js-active');
   ref.watchBtn.classList.add('btn-js-active ');
 }
-
-document.querySelector('.theme__container').addEventListener('click', () => {
-  document.querySelector('.sun-logo').classList.toggle('animate-sun');
-  document.querySelector('.moon-logo').classList.toggle('animate-moon');
-  document.querySelector('body').classList.toggle('dark');
-});

@@ -9,7 +9,6 @@ const body = document.querySelector('body');
 
 const renderDetails = e => {
   const idEl = e.target.closest('li').id;
-  console.log('~ idEl', idEl);
   theMovieAPI.fetchDetails(idEl).then(res => {
     renderFilm(res);
   });
@@ -82,12 +81,20 @@ const renderFilm = ({
 function handleModalClose() {
   modalRef.classList.remove('is-open');
   modalInner.innerHTML = '';
+  document.removeEventListener('keydown', handleEscClose);
 }
 
 function handleEscClose(e) {
   if (e.key === 'Escape') {
+    document.removeEventListener('keydown', handleEscClose);
     handleModalClose();
   }
 }
 modalCloseBtn.addEventListener('click', handleModalClose);
 
+function handleCloseToBackdrop(e) {
+  if (e.target.className === 'modal is-open') {
+    handleModalClose();
+  }
+}
+modalRef.addEventListener('click', handleCloseToBackdrop);
