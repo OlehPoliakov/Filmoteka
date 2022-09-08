@@ -14,3 +14,4 @@ import './js//services/scroll';
 import './js/services/modalOpen';
 //
 import './js/services/theme-change';
+import './js/services/modal-btns';

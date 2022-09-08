@@ -1,5 +1,5 @@
 const refs = {
-  openModalBtn: document.querySelector('.header__contact-link'),
+  openModalBtn: document.querySelector('.footer-link'),
   closeModalBtn: document.querySelector('[data-modal-close-contacts]'),
   backdrop: document.querySelector('.backdrop__modal'),
 };

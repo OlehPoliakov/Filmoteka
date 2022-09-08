@@ -14,9 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const button = document.querySelector('.header__btn-signup');
-console.log(button);
 const div = document.querySelector('.header__btn-container');
-console.log(div);
 
 button.addEventListener('click', onAuthGoogle);
 

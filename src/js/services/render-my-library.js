@@ -1,5 +1,4 @@
 import { ref } from './switch-home-library';
-
 function renderEmptyLibrary() {
   return `<div class='container content__library'>
           <div class='content__library-container'>
@@ -13,43 +12,39 @@ function renderEmptyLibrary() {
           </div>`;
 }
 
-const removeSelector = document.querySelector('.movie-cards__list');
+const btnLibraryWatch = document.querySelector('.library-watched');
+const btnLibraryQueue = document.querySelector('.library-queue');
 
 ref.libraryBtn.addEventListener('click', onHandleBtnClick);
 
 import renderMarkupMovieCards from '../templates/movie-card';
-// import infiniteObserver from './infinityScroll';
-// const getWathed = localStorage.getItem('watched');
-// const wathedPArse = JSON.parse(getWathed) ?? [];
-// const updateMovies = [...wathedPArse, ]
 
-function onHandleBtnClick() {
+function onHandleBtnClick(e) {
   const getWathed = localStorage.getItem('watched');
   const wathedPArse = JSON.parse(getWathed) ?? [];
+
+  const getQueue = localStorage.getItem('queue') ?? '[]';
+  const parseQueue = JSON.parse(getQueue);
+
   if (ref.libraryBtn.classList.contains('current')) {
-    // ref.gallery.innerHTML = '';
-    // infiniteObserver.disconnect();
-    console.log('~ wathedPArse', wathedPArse);
+    if (wathedPArse.length === 0) {
+      ref.gallery.innerHTML = renderEmptyLibrary();
+      return;
+    }
 
+    btnLibraryWatch.classList.add('btn-js-active');
     renderMarkupMovieCards(wathedPArse, true);
-    // console.log("~ markup", markup)
-    // ref.gallery.innerHTML = markup;
-    // console.log('~ wathedPArse', wathedPArse);
 
-    // wathedPArse.forEach(el => {
-    //   console.log("~ el", el)
-    //   const objVal = Object.values(el);
-    //   console.log("~ objVal", objVal)
-    //   // ref.gallery.insertAdjacentHTML('beforebegin', element);
-    //   // ref.gallery.innerHTML = renderMarkupMovieCards(el);
-    // });
-    // ref.gallery.innerHTML = '';
-    // removeSelector.classList.remove('movie-cards__list');
+    btnLibraryWatch.addEventListener('click', e => {
+      e.target.classList.add('btn-js-active');
+      btnLibraryQueue.classList.remove('btn-js-active');
+      renderMarkupMovieCards(wathedPArse, true);
+    });
+
+    btnLibraryQueue.addEventListener('click', e => {
+      e.target.classList.add('btn-js-active');
+      btnLibraryWatch.classList.remove('btn-js-active');
+      renderMarkupMovieCards(parseQueue, true);
+    });
   }
-
-  // ref.gallery.innerHTML = renderEmptyLibrary();
 }
-
-// wathedPArse.forEach(element => {
-//   console.log(element);
-// });

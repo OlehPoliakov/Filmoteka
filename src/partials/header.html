@@ -25,28 +25,23 @@
                     </div>
                 </li>
                 <li class="header__item">
-                   <a href="./index.html" class="header__ref header__home-link current">Home</a>
+                    <a href="./index.html" class="header__ref header__home-link current">Home</a>
                 </li>
                 <li class="header__item">
-                   <a class="header__ref header__library-link">my library</a>
+                    <a class="header__ref header__library-link">my library</a>
                 </li>
                 <li class="header__item">
                     <a class="header__ref header__contact-link">Contacts</a>
                 </li>
                 <li class="header__item">
                     <div class="header__btn-container">
-                    <a class="header__ref header__singup-link header__btn-signup">Sign in</a>
+                        <a class="header__ref header__singup-link header__btn-signup">Sign in</a>
                     </div>
                 </li>
             </ul>
         </nav>
         <form class="form" id="search-form">
-            <input
-            class="form__input"
-            name="query"
-            type="text"
-            placeholder="Movie search"
-            />
+            <input class="form__input" name="query" type="text" placeholder="Movie search" />
             <button class="form__btn" type="submit">
                 <svg class="form__icon" width="16" height="16">
                     <use href="./images/sprite.svg#icon-search-button"></use>
@@ -54,10 +49,9 @@
             </button>
         </form>
         <p class="failure-message"></p>
-       <div class="library is-hidden">
-        <button class="library__btn watch__btn" type="button">Watched</button>
-        <button class="library__btn queue__btn" type="button">Queue</button>
-       </div>
+        <div class="library is-hidden">
+            <button class="library__btn watch__btn library-watched">Watched</button>
+            <button class="library__btn queue__btn library-queue">Queue</button>
+        </div>
     </div>
 </header>
-

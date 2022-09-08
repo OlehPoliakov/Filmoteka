@@ -47,3 +47,19 @@ ul {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.active-orange {
+  background-color: $primary-color;
+}
+
+@mixin center($display: flex, $justContent: center, $alItems: center) {
+  display: $display;
+  justify-content: $justContent;
+  align-items: $alItems;
+}
+
+.pressed {
+  background-color: #ff6b01;
+  border: none;
+  color: #fff;
+}
