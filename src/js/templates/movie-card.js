@@ -5,7 +5,7 @@ const gallery = document.querySelector('.movie-cards__list');
 const allGenres = localStorage.getItem('genres');
 const parse = JSON.parse(allGenres);
 
-export default function renderMarkupMovieCards(results) {
+export default function renderMarkupMovieCards(results, mylibrary) {
   const markup = results
     .map(
       ({
@@ -18,10 +18,10 @@ export default function renderMarkupMovieCards(results) {
         release_date,
       }) => {
         const genres =
-        genre_ids
-        .filter(id => parse[id])
-        .map(id => parse[id])
-        .join(', ') || 'Genres are not specified';
+          genre_ids
+            .filter(id => parse[id])
+            .map(id => parse[id])
+            .join(', ') || 'Genres are not specified';
 
         const poster = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
@@ -40,7 +40,9 @@ export default function renderMarkupMovieCards(results) {
           </div>
           <div class="language-rating">
             <span class="info-item-language"> ${original_language.toUpperCase()}</span>
-            <p class="info-item-rating"><span>&#9733;</span> ${vote_average.toFixed(1)}</p>
+            <p class="info-item-rating"><span>&#9733;</span> ${vote_average.toFixed(
+              1
+            )}</p>
           </div>
         </div>
       </div>
@@ -48,10 +50,10 @@ export default function renderMarkupMovieCards(results) {
       }
     )
     .join('');
-  gallery.insertAdjacentHTML('beforeend', markup);
+    mylibrary ? gallery.innerHTML = markup : gallery.insertAdjacentHTML('beforeend', markup);
 
-  const lastCard = document.querySelector('.movie-card__item:last-child');
-  if (lastCard) {
-    infiniteObserver.observe(lastCard);
-  }
+  // const lastCard = document.querySelector('.movie-card__item:last-child');
+  // if (lastCard) {
+  //   infiniteObserver.observe(lastCard);
+  // }
 }

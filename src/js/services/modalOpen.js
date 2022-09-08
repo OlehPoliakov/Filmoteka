@@ -73,3 +73,26 @@ function handleCloseToBackdrop(e) {
   }
 }
 modalRef.addEventListener('click', handleCloseToBackdrop);
+
+const ar = localStorage.getItem('films');
+const parsedAr = JSON.parse(ar);
+
+const getWathed = localStorage.getItem('watched');
+const getWathcParse = JSON.parse(getWathed);
+const arr = getWathcParse ?? [];
+
+function test(e) {
+  const idEl = e.target.closest('li').id;
+  if (e.target.className === 'btn-watched') {
+    parsedAr.find(el => {
+      if (el.id === Number(idEl)) {
+        if (arr.find(item => item.id === el.id)) {
+          return;
+        }
+        arr.push(el);
+      }
+    });
+    localStorage.setItem('watched', JSON.stringify(arr));
+  }
+}
+modalInner.addEventListener('click', test);

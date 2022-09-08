@@ -17,11 +17,39 @@ const removeSelector = document.querySelector('.movie-cards__list');
 
 ref.libraryBtn.addEventListener('click', onHandleBtnClick);
 
+import renderMarkupMovieCards from '../templates/movie-card';
+// import infiniteObserver from './infinityScroll';
+// const getWathed = localStorage.getItem('watched');
+// const wathedPArse = JSON.parse(getWathed) ?? [];
+// const updateMovies = [...wathedPArse, ]
+
 function onHandleBtnClick() {
+  const getWathed = localStorage.getItem('watched');
+  const wathedPArse = JSON.parse(getWathed) ?? [];
   if (ref.libraryBtn.classList.contains('current')) {
-    ref.gallery.innerHTML = '';
-    removeSelector.classList.remove('movie-cards__list');
+    // ref.gallery.innerHTML = '';
+    // infiniteObserver.disconnect();
+    console.log('~ wathedPArse', wathedPArse);
+
+    renderMarkupMovieCards(wathedPArse, true);
+    // console.log("~ markup", markup)
+    // ref.gallery.innerHTML = markup;
+    // console.log('~ wathedPArse', wathedPArse);
+
+    // wathedPArse.forEach(el => {
+    //   console.log("~ el", el)
+    //   const objVal = Object.values(el);
+    //   console.log("~ objVal", objVal)
+    //   // ref.gallery.insertAdjacentHTML('beforebegin', element);
+    //   // ref.gallery.innerHTML = renderMarkupMovieCards(el);
+    // });
+    // ref.gallery.innerHTML = '';
+    // removeSelector.classList.remove('movie-cards__list');
   }
 
-  ref.gallery.innerHTML = renderEmptyLibrary();
+  // ref.gallery.innerHTML = renderEmptyLibrary();
 }
+
+// wathedPArse.forEach(element => {
+//   console.log(element);
+// });
