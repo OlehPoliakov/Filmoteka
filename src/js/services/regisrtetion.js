@@ -15,24 +15,31 @@ const app = initializeApp(firebaseConfig);
 
 const button = document.querySelector('.header__btn-signup');
 const div = document.querySelector('.header__btn-container');
+const libraryLink = document.querySelector('.header__item.is-hidden');
+const mylibraryBtn = document.querySelector('.header__library-link.current');
 
 button.addEventListener('click', onAuthGoogle);
 
-function onAuthGoogle() {
+export default function onAuthGoogle() {
   const auth = getAuth();
+  const authKey = JSON.parse(localStorage.getItem('authKey'));
+  if (authKey) {
+    localStorage.setItem('authKey', JSON.stringify(''));
+    div.innerHTML = `<a class="header__ref header__singup-link header__btn-signup" style="font-size">Sign in</a>`;
+    libraryLink.classList.add('is-hidden');
+    return;
+  }
   signInWithPopup(auth, provider)
     .then(result => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      console.log(user);
 
-      localStorage.setItem(user.email, user.displayName);
-    
-      if (user.email) {
-        button.classList.add('is-hidden');
-        div.innerHTML = `<a class="header__ref header__singup-link header__btn-signup" style="font-size">${user.displayName}</a>`;       
-      }
+      localStorage.setItem('authKey', JSON.stringify(user.displayName));
+
+      // button.classList.add('is-hidden');
+      div.innerHTML = `<a class="header__ref header__singup-link header__btn-signup" style="font-size">Sign out ${user.displayName}</a>`;
+      libraryLink.classList.remove('is-hidden');
     })
     .catch(error => {
       const errorCode = error.code;

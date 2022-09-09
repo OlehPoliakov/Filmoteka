@@ -15,3 +15,4 @@ import './js/services/modalOpen';
 //
 import './js/services/theme-change';
 import './js/services/modal-btns';
+import './js/services/checkAuth';
