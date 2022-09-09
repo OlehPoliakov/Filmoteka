@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: #00000084;
   opacity: 0;
   visibility: hidden;
@@ -16,11 +16,24 @@
 
 .modal-inner {
   position: relative;
-  width: 806px;
-  height: 568px;
   margin: 0 auto;
   background-color: white;
   list-style-type: none;
+
+  @media screen and (min-width: $mobile) {
+    width: 280px;
+    max-height: 940px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 700px;
+    height: 558px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 806px;
+    min-height: 568px;
+  }
 }
 .modal.is-open {
   opacity: 1;
@@ -35,9 +48,21 @@
 }
 
 .movies__item {
-  padding: 40px 12px;
-}
+  @media screen and (min-width: $mobile) {
+    width: 280px;
+    height: 940px;
+  }
 
+  @media screen and (min-width: $tablet) {
+    width: 700px;
+    height: 558px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding: 40px 12px;
+    
+  }
+}
 
 .btn-close {
   position: absolute;
@@ -48,7 +73,6 @@
   background: white;
   border-radius: 50%;
   transition: 250ms;
-
 
   &:hover,
   &:focus {
@@ -61,14 +85,52 @@
 }
 
 .movie-modal__img {
-  position: absolute;
-  width: 375px;
-  height: 478px;
   border-radius: 5px;
+  height: 374px;
+
+  @media screen and (min-width: $mobile) {
+    margin-top: 48px;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: $tablet) {
+    position: absolute;
+    margin-left: 36px;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    position: absolute;
+    margin: 0;
+    width: 375px;
+    height: 478px;
+  }
 }
 
 .movies__wrapper {
-  margin-left: 391px;
+  width: 240px;
+  height: 357px;
+
+  @media screen and (min-width: $mobile) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 40px;
+    margin-left: 368px;
+    width: 264px;
+    height: 374px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 0;
+    margin-left: 391px;
+  }
 }
 
 .movie-modal__name {
@@ -76,46 +138,106 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+
+  @media screen and (min-width: $mobile) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+  }
 }
 
-.btn-watched {
-  min-height: 44px;
-  padding: 14 10 12;
-  padding-bottom: 10px;
+.btn-container {
+  display: flex;
+
+  @media screen and (min-width: $mobile) {
+    gap: 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+  }
+
+  @media screen and (min-width: $desktop) {
+    gap: 0px;
+  }
+}
+
+.btn-watched,
+.btn-queue {
+  margin-top: 20px;
   border: 1px solid #000000;
   border-radius: 5px;
   font-weight: 500;
   font-size: 12px;
+  min-height: 44px;
+  min-width: 110px;
   line-height: 1.3;
   text-transform: uppercase;
   transition: all 0.8s ease 0s;
-  margin-top: 20px;
-  // margin-left: 20px;
+  padding: 6px 27px;
 
-  // &:hover,
-  // &:focus {
-  //   // background-color: #ff6b01;
-  //   color: white;
-  //   // border: 1px solid #ff6b01;
-  // }
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    color: white;
+    border: 1px solid #ff6b01;
+  }
+
+  @media screen and (min-width: $tablet) {
+    min-width: 125px;
+    padding: 0;
+  }
+
+  @media screen and (min-width: $desktop) {
+    min-width: 136px;
+    margin-left: 15px;
+  }
 }
 
 .movie-modal__article {
   font-family: 'Roboto';
   font-style: normal;
-  width: 391px;
   font-weight: 500;
   font-size: 12px;
+  margin-top: 20px;
+
+  @media screen and (min-width: $mobile) {
+    width: 240px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 391px;
+  }
 }
 
 .movie-overview__title {
-  margin-top: 20px;
-  margin-bottom: 8px;
   text-transform: uppercase;
+
+  @media screen and (min-width: $mobile) {
+    // margin: 20px 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
 }
 
 .movie-overview__text {
+  margin-top: 8px;
   line-height: 1.7;
 }
 
@@ -123,6 +245,7 @@
   padding: 0;
   border: 0;
   margin-top: 20px;
+  margin-left: -2px;
 }
 
 .movie-modal__text {
@@ -132,19 +255,34 @@
   font-size: 12px;
   line-height: 1.4;
   color: #8c8c8c;
-  padding-bottom: 6px;
+  margin-top: 8px;
+  margin-right: 20px;
+
+  @media screen and (min-width: $tablet) {
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-bottom: 6px;
+  }
 }
 
 .movie-modal__numbers {
-  margin-left: 50px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.4;
   color: #000000;
-  padding-left: 83px;
-  padding-bottom: 6px;
+  padding-top: 4px;
+  padding-left: 15px;
+
+  @media screen and (min-width: $tablet) {
+    padding-left: 39px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-bottom: 4px;
+  }
 }
 
 .movies__name {
@@ -178,209 +316,3 @@
   border-radius: 5px;
   padding: 1 auto;
 }
-
-//  .movies__img {
-//   // position: absolute;
-//   //   top: 0px;
-//   //   left: 0px;
-//   //  width: 375px;
-//    height: 478px;
-//    border-radius: 5px;
-//  }
-
-// .movies__item {
-//   list-style-type: none;
-//  }
-
-// .movie-modal__close {
-//       position: absolute;
-//       top: 0;
-//       right: 0;
-//       width: 45px;
-//       height: 45px;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       cursor: pointer;
-//       border: rgba(0, 0, 0, 0);
-//       background-color: white;
-//       color: rgba(0, 0, 0, 1);
-
-//       &:hover,
-//       &:focus {
-//         fill: #ff6b01;
-//         ;
-//       }
-//     }
-
-// .btn-close {
-//  width: 40px;
-//  height: 40px;
-// }
-
-// .movie-modal__article {
-//   font-family: 'Roboto';
-//   font-style: normal;
-//   width: 391px;
-//   font-weight: 500;
-//   font-size: 12px;
-// }
-
-// // .movie-modal__body {
-// //   position: relative;
-// // }
-
-// // .movies__wrapper {
-// //   // display: flex;
-// // }
-
-// .movies__name {
-//   font-family: 'Roboto';
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 30px;
-//     line-height: 1.16;
-// }
-
-// .movies__item {
-//   padding: 40px 12px;
-// }
-
-// .movie-modal {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 2;
-//   padding: 0;
-//   overflow-y: auto;
-//   overflow-x: hidden;
-//   transition: all 0.8s ease 0s;
-
-//   &__body {
-//     position: relative;
-//     top: 50%;
-//     left: 50%;
-//     padding: 40px 12px;
-//     transform: translate(-50%, -50%);
-//     width: 806px;
-//     min-height: 558px;
-//     background-color: white;
-//     box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
-//       0px 2px 1px rgb(0 0 0 / 20%);
-//     text-align: left;
-
-//     //     // до 768 телефон и планшет
-//     //     @media screen and (min-width: 768px) {
-//     //         max-width: 704px;
-//     //         min-height: 552px;
-//     //     }
-
-//     //     // от 1200 только пк
-//     //     @media screen and (min-width: 1280px) {
-//     //         width: 806px;
-//     //         min-height: 558px;
-//     //     }
-//   }
-
-//   &__content {
-//     display: flex;
-//   }
-
-//   &__description {
-//     margin-left: 16px;
-//   }
-
-//   &__table {
-//     padding: 0;
-//     border: 0;
-
-//   }
-
-//   &__text {
-//     font-family: 'Roboto';
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 12px;
-//     line-height: 1.4;
-//     color: #8c8c8c;
-//     padding-bottom: 6px;
-
-//   }
-
-//   &__numbers {
-//     margin-left: 50px;
-//     font-family: 'Roboto';
-//     font-style: normal;
-//     font-weight: 500;
-//     font-size: 12px;
-//     line-height: 1.4;
-//     color: #000000;
-//     padding-left: 83px;
-//   }
-
-//   &__vote {
-//     color: white;
-//     border-radius: 3px;
-//     background: #ff6b01;
-//     border-radius: 5px;
-//     padding: 3 auto;
-//   }
-
-//   &__votes {
-//     color: #000000;
-//     border-radius: 3px;
-//     background: #f7f7f7;
-//     border-radius: 5px;
-//     padding: 1 auto;
-//   }
-
-//   &__links {
-//     display: flex;
-//     margin-top: 20px;
-//     margin-left: 20px;
-//     gap: 10px;
-//   }
-
-//   &__btn {
-//     min-height: 44px;
-//     padding: 14 10 12;
-//     padding-bottom: 10px;
-//     border: 1px solid #000000;
-//     border-radius: 5px;
-//     font-weight: 500;
-//     font-size: 12px;
-//     line-height: 1.3;
-//     text-transform: uppercase;
-
-//     &:hover,
-//     &:focus {
-//       background-color: #ff6b01;
-//       border: #ff6b01;
-//       color: white;
-//     }
-//   }
-
-// }
-
-// .movie-overview__title {
-//   margin-top: 20px;
-//   margin-bottom: 8px;
-//   text-transform: uppercase;
-// }
-
-// .movie-overview__text {
-//   line-height: 1.7;
-// }
-
-// .modal-open {
-//   opacity: 1;
-//   visibility: visible;
-// }
-
-// .modal-hidden {
-//   visibility: hidden;
-//   opacity: 0;
-//   pointer-events: none;
-// }
