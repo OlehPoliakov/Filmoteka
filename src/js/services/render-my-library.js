@@ -28,7 +28,7 @@ function onHandleBtnClick(e) {
   const parseQueue = JSON.parse(getQueue);
 
   if (ref.libraryBtn.classList.contains('current')) {
-    paginationRef.classList.add('is-hidden');
+    paginationRef.classList.add('dn');
     if (wathedPArse.length === 0 && parseQueue.length === 0) {
       ref.gallery.innerHTML = renderEmptyLibrary();
       return;

@@ -27,7 +27,7 @@
 
   @media screen and (min-width: $tablet) {
     width: 700px;
-    height: 558px;
+    height: 490px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -60,14 +60,14 @@
 
   @media screen and (min-width: $desktop) {
     padding: 40px 12px;
-    
   }
 }
 
 .btn-close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 14%;
+  right: 20%;
+  z-index: 1;
   transform: translate(-50% -50%);
   border: 1px solid #ffffff;
   background: white;
@@ -81,6 +81,19 @@
     background-color: white;
     border: white;
     font-size: 25px;
+  }
+
+  @media screen and (min-width: $mobile) {
+    top: 0;
+    right: 10px;
+  }
+  @media screen and (min-width: $tablet) {
+    top: 15%;
+    right: 6%;
+  }
+  @media screen and (min-width: $desktop) {
+    top: 14%;
+    right: 25%;
   }
 }
 

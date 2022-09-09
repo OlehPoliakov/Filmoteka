@@ -6,6 +6,7 @@ import { fetchDataFilms } from '..';
 // import { loadMoreContent } from './infinityScroll';
 export const theMovieAPI = new TheMovieAPI();
 const gallery = document.querySelector('.movie-cards__list');
+const failureRef = document.querySelector('.failure-message');
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
@@ -40,7 +41,7 @@ async function handleSubmit(event) {
   const { query } = event.currentTarget.elements;
   const inputValue = query.value.trim();
   if (!inputValue) {
-    console.log('Введіть дані для пошуку');
+    failureRef.classList.remove('is-hidden');
     return;
   }
 
@@ -54,9 +55,10 @@ async function handleSubmit(event) {
       page
     );
     if (results.length === 0) {
-      alert('введіть дані для пошуку');
+      failureRef.classList.remove('is-hidden');
       return;
     }
+    failureRef.classList.add('is-hidden');
     if (total === 0) {
       return;
     }
