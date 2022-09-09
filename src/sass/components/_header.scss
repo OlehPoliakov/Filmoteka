@@ -93,7 +93,6 @@
     background-repeat: no-repeat;
   }
 }
-
 .header__nav {
   display: flex;
   align-items: center;
@@ -419,4 +418,14 @@ input::placeholder {
   line-height: 1.14;
   font-style: normal;
   font-weight: 400;
+}
+
+.failure-message {
+  @media screen and (min-width: $mobile) {
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: 393px;
+  }
 }
