@@ -1,4 +1,3 @@
-import infiniteObserver from '../services/infinityScroll';
 
 const gallery = document.querySelector('.movie-cards__list');
 

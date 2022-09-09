@@ -1,0 +1,41 @@
+.tui-pagination {
+  padding-bottom: 200px;
+}
+.tui-page-btn {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+strong.tui-page-btn.tui-is-selected {
+  background-color: #ff6b08;
+  &:hover {
+    background-color: #ff6b08;
+  }
+}
+.tui-pagination .tui-page-btn {
+  border: none !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  @media (max-width: 576px) {
+    display: none;
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+.tui-page-btn.tui-prev,
+.tui-page-btn.tui-next {
+  background-color: #f7f7f7;
+}
+.tui-page-btn.tui-first,
+.tui-page-btn.tui-last {
+  display: none !important;
+}
+.tui-page-btn.tui-next-is-ellip.tui-last-child,
+.tui-page-btn.tui-prev-is-ellip.tui-first-child {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

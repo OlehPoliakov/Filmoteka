@@ -71,12 +71,14 @@ const renderFilm = ({
             <p class="movie-overview__title">ABOUT</p>
             <p class="movie-overview__text">${overview}</p>
             </article>
-            <button class='btn-watched' data-btnModal="watched">${
+            <div class="btn-container">
+             <button class="btn-watched" data-btnModal="watched">${
               isInWatched ? 'Remove from watched' : 'add to Watched'
             }</button>
-            <button class='btn-queue' data-btnModal="queue">${
+            <button class="btn-queue" data-btnModal="queue">${
               isInQueue ? 'Remove from queue' : 'add to queue'
             }</button>
+            </div>
             </div>
         </div>
     </li>`;
@@ -139,9 +141,6 @@ function test(e) {
 
     localStorage.setItem('watched', JSON.stringify(arrWatched));
   }
-
-
-
 
   if (e.target.className === 'btn-queue') {
     const btnQueue = document.querySelector('[data-btnModal="queue"]');
