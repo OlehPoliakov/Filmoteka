@@ -29,23 +29,35 @@ function onHandleBtnClick(e) {
 
   if (ref.libraryBtn.classList.contains('current')) {
     paginationRef.classList.add('is-hidden');
-    if (wathedPArse.length === 0) {
+    if (wathedPArse.length === 0 && parseQueue.length === 0) {
       ref.gallery.innerHTML = renderEmptyLibrary();
       return;
     }
 
-    btnLibraryWatch.classList.add('btn-js-active');
-    renderMarkupMovieCards(wathedPArse, true);
+    if (wathedPArse.length !== 0) {
+      btnLibraryWatch.classList.add('btn-js-active');
+      renderMarkupMovieCards(wathedPArse, true);
+    } else {
+      ref.gallery.innerHTML = renderEmptyLibrary();
+    }
 
     btnLibraryWatch.addEventListener('click', e => {
       e.target.classList.add('btn-js-active');
       btnLibraryQueue.classList.remove('btn-js-active');
+      if (wathedPArse.length === 0) {
+        ref.gallery.innerHTML = renderEmptyLibrary();
+        return;
+      }
       renderMarkupMovieCards(wathedPArse, true);
     });
 
     btnLibraryQueue.addEventListener('click', e => {
       e.target.classList.add('btn-js-active');
       btnLibraryWatch.classList.remove('btn-js-active');
+      if (parseQueue.length === 0) {
+        ref.gallery.innerHTML = renderEmptyLibrary();
+        return;
+      }
       renderMarkupMovieCards(parseQueue, true);
     });
   }
